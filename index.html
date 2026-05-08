@@ -446,10 +446,10 @@ body::after{
 /* ══════ APPROACH ══════ */
 .approach{
   padding:80px clamp(24px,6vw,80px) 120px;
-  position:relative;overflow:hidden;
+  position:relative;overflow:clip;
 }
 .appr-inner{max-width:1000px;margin:0 auto;display:flex;gap:80px;align-items:flex-start;position:relative;z-index:1}
-.appr-left{flex:0 0 360px;position:sticky;top:120px}
+.appr-left{flex:0 0 360px;position:sticky;top:calc(50vh - 80px)}
 .appr-label{
   font-size:10.5px;font-weight:600;letter-spacing:4px;text-transform:uppercase;
   color:var(--gold);margin-bottom:14px;
@@ -1629,12 +1629,28 @@ var zigzagDef=[
   {sel:'.manifesto',  x: 1, pinned:true},
   {sel:'.stats',      x:-1, pinned:false},
   {sel:'.services',   x: 1, pinned:true},
-  {sel:'.approach',   x:-1, pinned:false},
+  {sel:'.approach',   x:'appr-left', pinned:true},
   {sel:'.cases',      x: 1, pinned:false},
   {sel:'.industries', x:-1, pinned:false},
   {sel:'.cta',        x: 0, pinned:false}
 ];
 window._orbX=0;
+// Convert a pixel x-position on screen to orthographic frustum x-coordinate
+function pixelToFrustumX(px){
+  const edge=getOrbEdgeX();
+  return ((px/window.innerWidth)-0.5)*2*edge;
+}
+function resolveZigzagX(xVal){
+  if(xVal==='appr-left'){
+    var el=document.querySelector('.appr-left');
+    if(el){
+      var rect=el.getBoundingClientRect();
+      return pixelToFrustumX(rect.left+rect.width/2);
+    }
+    return -0.35*getOrbEdgeX();
+  }
+  return xVal*getOrbEdgeX();
+}
 function updateOrbZigzag(){
   const scrollY=window.scrollY||window.pageYOffset;
   const vh=window.innerHeight;
@@ -1654,27 +1670,28 @@ function updateOrbZigzag(){
       const enter=Math.max(0,top);
       // Exit: when section bottom leaves viewport bottom
       const exit=Math.max(0,top+h-vh);
-      anchors.push({scroll:enter, x:zigzagDef[i].x});
-      anchors.push({scroll:exit,  x:zigzagDef[i].x});
+      anchors.push({scroll:enter, xRaw:zigzagDef[i].x});
+      anchors.push({scroll:exit,  xRaw:zigzagDef[i].x});
     }else{
       // Center: section center aligns with viewport center
       const center=Math.max(0,top+h/2-vh/2);
-      anchors.push({scroll:center, x:zigzagDef[i].x});
+      anchors.push({scroll:center, xRaw:zigzagDef[i].x});
     }
   }
   anchors.sort((a,b)=>a.scroll-b.scroll);
 
-  const edge=getOrbEdgeX();
   if(scrollY<=anchors[0].scroll){
-    window._orbX=anchors[0].x*edge;
+    window._orbX=resolveZigzagX(anchors[0].xRaw);
   }else if(scrollY>=anchors[anchors.length-1].scroll){
-    window._orbX=anchors[anchors.length-1].x*edge;
+    window._orbX=resolveZigzagX(anchors[anchors.length-1].xRaw);
   }else{
     for(let i=0;i<anchors.length-1;i++){
       if(scrollY>=anchors[i].scroll&&scrollY<anchors[i+1].scroll){
         const range=anchors[i+1].scroll-anchors[i].scroll;
         const t=range>0?(scrollY-anchors[i].scroll)/range:0;
-        window._orbX=(anchors[i].x+(anchors[i+1].x-anchors[i].x)*t)*edge;
+        const xA=resolveZigzagX(anchors[i].xRaw);
+        const xB=resolveZigzagX(anchors[i+1].xRaw);
+        window._orbX=xA+(xB-xA)*t;
         break;
       }
     }
