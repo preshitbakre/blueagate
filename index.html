@@ -9,7 +9,7 @@
 <style>
 /* ══════ THEME ══════ */
 [data-theme="dark"] {
-  --bg: #04080F;
+  --bg: #121826;
   --bg-alt: #080e1c;
   --bg-card: rgba(14,28,56,0.45);
   --bg-card-hover: rgba(20,40,75,0.6);
@@ -23,7 +23,7 @@
   --gold: #D4A63A;
   --glow-b: rgba(30,95,214,0.12);
   --glow-g: rgba(212,166,58,0.08);
-  --nav-bg: rgba(4,8,15,0.75);
+  --nav-bg: #121826;
   --divider: rgba(255,255,255,0.06);
   --grain-opacity: 0.03;
 }
@@ -81,13 +81,11 @@ body::after{
   display:flex;align-items:center;justify-content:space-between;
   background:var(--nav-bg);backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);
   border-bottom:1px solid var(--divider);
-  transition:all 0.5s;
-  transform:translateY(-100%);animation:navIn 0.5s ease forwards 1.6s;
 }
-@keyframes navIn{to{transform:translateY(0)}}
 
 .nav-brand{display:flex;align-items:center;gap:10px}
 .nav-brand svg{width:28px;height:28px}
+.nav-brand-logo{width:28px;height:28px;object-fit:contain;display:block}
 .nav-brand-name{
   font-family:'Montserrat',sans-serif;font-weight:800;font-size:13px;
   letter-spacing:2px;text-transform:uppercase;
@@ -96,21 +94,14 @@ body::after{
 .nav-links{display:flex;gap:32px;list-style:none}
 .nav-links a{
   font-size:11.5px;font-weight:500;letter-spacing:1.8px;text-transform:uppercase;
-  color:var(--text-dim);transition:color 0.3s;
+  color:rgba(255,255,255,0.8);transition:color 0.3s;
 }
-.nav-links a:hover{color:var(--text)}
+.nav-links a:hover{color:var(--gold);font-weight:700}
 .nav-right{display:flex;align-items:center;gap:14px}
-.theme-btn{
-  width:34px;height:34px;border-radius:50%;border:1px solid var(--divider);
-  background:transparent;cursor:pointer;font-size:13px;
-  display:flex;align-items:center;justify-content:center;
-  transition:all 0.3s;color:var(--text-dim);
-}
-.theme-btn:hover{border-color:var(--gold);color:var(--gold)}
 .nav-cta{
-  padding:9px 22px;border-radius:100px;background:var(--blue);color:#fff;
+  padding:9px 22px;border-radius:100px;background:#122240;color:var(--gold);
   font-family:'Montserrat',sans-serif;font-weight:700;font-size:10.5px;
-  letter-spacing:1.5px;text-transform:uppercase;border:none;cursor:pointer;
+  letter-spacing:1.5px;text-transform:uppercase;border:1px solid rgba(212,166,58,0.4);cursor:pointer;
   transition:all 0.3s;
 }
 .nav-cta:hover{box-shadow:0 0 28px var(--glow-b);transform:translateY(-1px)}
@@ -124,10 +115,10 @@ body::after{
   text-align:center;overflow:hidden;
 }
 .hero-inner{max-width:860px;margin:0 auto;padding:0 24px;
-  position:absolute;left:50%;top:55%;transform:translate(-50%,-50%);width:100%;
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:100%;
 }
 .hero-over{
-  display:inline-block;font-size:10.5px;font-weight:600;
+  display:inline-block;font-size:15.5px;font-weight:600;
   letter-spacing:4px;text-transform:uppercase;color:var(--gold);
   margin-bottom:28px;opacity:0;transform:translateY(16px);
   animation:fadeUp 0.8s ease forwards 0.4s;
@@ -137,7 +128,7 @@ body::after{
   background:var(--gold);vertical-align:middle;margin:0 14px;opacity:0.5;
 }
 .hero-h1{
-  font-family:'Montserrat',sans-serif;font-weight:900;
+  font-family:'Montserrat',sans-serif;font-weight:600;
   font-size:clamp(36px,6vw,71px);line-height:1.04;letter-spacing:-2px;
   margin-top:48px;margin-bottom:48px;
 }
@@ -154,7 +145,7 @@ body::after{
 @keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
 
 .hero-sub{
-  font-size:clamp(15px,1.6vw,19px);line-height:1.75;color:var(--text-dim);
+  font-size:clamp(15px,1.6vw,19px);line-height:1.75;color:#d7e0f7;
   max-width:520px;margin:0 auto 40px;
   opacity:0;animation:fadeUp 0.8s ease forwards 1s;
 }
@@ -168,9 +159,9 @@ body::after{
   letter-spacing:1px;text-transform:uppercase;cursor:pointer;
   transition:all 0.35s;
 }
-.btn.fill{background:var(--blue);color:#fff;border:none}
-.btn.fill:hover{box-shadow:0 8px 36px rgba(30,95,214,0.45);transform:translateY(-2px)}
-.btn.outline{background:transparent;color:var(--text);border:1px solid var(--text-faint)}
+.btn.fill{background:#122240;color:var(--gold);border:1px solid rgba(212,166,58,0.4)}
+.btn.fill:hover{box-shadow:0 8px 36px rgba(18,34,64,0.55);transform:translateY(-2px)}
+.btn.outline{background:transparent;color:var(--text);border:1px solid rgba(212,166,58,0.4)}
 .btn.outline:hover{border-color:var(--gold);color:var(--gold)}
 
 .hero-scroll{
@@ -186,29 +177,74 @@ body::after{
 .hero-scroll span{font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--text-faint)}
 
 /* ══════ MANIFESTO — scroll-pinned ══════ */
-.manifesto{height:150vh;position:relative;overflow:visible}
+.manifesto{height:200vh;position:relative;overflow:visible}
 .manifesto-pin{
-  position:sticky;top:0;height:100vh;
+  position:sticky;top:0;min-height:100vh;
   display:flex;align-items:center;justify-content:center;
-  padding:0 clamp(24px,8vw,120px);
+  padding:80px clamp(24px,6vw,80px);
 }
-.manifesto-p{
+.manifesto-block{
+  display:flex;flex-direction:column;gap:48px;
+  max-width:1200px;width:100%;
+}
+.m-row{
+  display:grid;grid-template-columns:220px 1fr;gap:32px;align-items:start;
+}
+.m-col-left{display:flex;flex-direction:column}
+.m-roman{
+  font-family:'Playfair Display',serif;font-style:italic;font-weight:400;
+  font-size:64px;color:var(--text);line-height:1;
+}
+.m-label{
   font-family:'Montserrat',sans-serif;font-weight:700;
-  font-size:clamp(24px,3.8vw,48px);line-height:1.4;letter-spacing:-0.5px;
-  text-align:center;max-width:900px;
+  font-size:30px;letter-spacing:5px;text-transform:uppercase;
+  color:var(--gold);margin-top:14px;
 }
-.manifesto-p .mw{
+.m-sub{
+  font-family:'DM Sans',sans-serif;font-weight:400;
+  font-size:15px;line-height:1.5;color:#d7e0f7;
+  margin-top:14px;max-width:240px;
+}
+.m-body{
+  font-family:'Playfair Display',serif;font-weight:400;
+  font-size:22px;line-height:1.5;
+  color:var(--text-faint);margin:0;
+  text-align:left;max-width:none;
+  padding-top:30px;
+}
+.m-body .mw{
+  display:inline;color:inherit;
+  transition:color 0.3s ease,background 0.3s ease,font-weight 0.3s ease;
+}
+.m-body .mw.on{color:var(--text)}
+.m-body .mw.acc{font-style:italic}
+.m-body .mw.acc.on{color:var(--text)}
+.m-body .mw.hl.on{
+  font-weight:700;color:var(--text);
+}
+.m-divider{
+  border:none;border-top:1px solid var(--divider);
+  margin:0;width:100%;
+}
+.manifesto-tag{
+  font-family:'Playfair Display',serif;font-weight:400;
+  font-size:25px;line-height:1.4;
+  text-align:center;max-width:900px;margin:24px auto 0;
+}
+.manifesto-tag .mw{
   display:inline-block;margin:0 4px;
-  color:var(--text-faint);
-  transition:color 0.3s ease;
+  color:var(--text-faint);transition:color 0.3s ease;
 }
-.manifesto-p .mw.on{color:var(--text)}
-.manifesto-p .mw.acc.on{color:var(--gold)}
-.manifesto-p .mw.blu.on{color:var(--blue-light)}
+.manifesto-tag .mw.on{color:var(--text)}
+.manifesto-tag .mw.acc.on{color:var(--gold)}
+@media (max-width:760px){
+  .m-row{grid-template-columns:1fr;gap:24px}
+  .m-roman{font-size:48px}
+}
 
 /* ══════ STATS ══════ */
 .stats{
-  padding:72px clamp(24px,6vw,80px);
+  padding:90px clamp(24px,6vw,80px);
   background:var(--bg-alt);
   border-top:1px solid var(--divider);border-bottom:1px solid var(--divider);
   transition:background 0.6s;
@@ -220,11 +256,44 @@ body::after{
              radial-gradient(ellipse at 70% 50%,var(--glow-g),transparent 50%);
   pointer-events:none;
 }
+.stats-over{
+  display:flex;align-items:center;justify-content:center;gap:14px;
+  font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600;
+  letter-spacing:5px;text-transform:uppercase;color:var(--gold);
+  position:relative;
+}
+.stats-over::before,.stats-over::after{
+  content:'';width:38px;height:1px;background:var(--gold);opacity:0.55;
+}
+.stats-dot{
+  width:5px;height:5px;border-radius:50%;background:var(--gold);
+  margin:22px auto;opacity:0.75;
+}
+.stats-hero{
+  text-align:center;margin:8px 0 0;position:relative;
+}
+.stats-hero-num{
+  font-family:'Playfair Display',serif;font-style:italic;font-weight:400;
+  font-size:clamp(48px,6.5vw,90px);line-height:0.95;letter-spacing:-2px;
+  color:var(--gold);display:inline-block;
+}
+.stats-hero-num .suf{
+  font-size:0.32em;vertical-align:top;line-height:1;
+  font-style:italic;font-weight:400;display:inline-block;margin-left:4px;
+}
+.stats-hero-lbl{
+  font-family:'Playfair Display',serif;font-style:italic;font-weight:400;
+  font-size:clamp(20px,2.2vw,28px);color:var(--text);margin-top:14px;
+}
+.stats-hero-sub{
+  font-family:'DM Sans',sans-serif;font-weight:400;
+  font-size:14px;color:var(--text-dim);margin-top:10px;letter-spacing:0.2px;
+}
 .stats-row{
-  display:flex;justify-content:center;gap:0;max-width:1000px;margin:0 auto;position:relative;
+  display:flex;justify-content:center;gap:0;max-width:1200px;margin:0 auto;position:relative;
 }
 .stat-item{
-  flex:1;text-align:center;padding:28px 16px;position:relative;
+  flex:1;text-align:center;padding:36px 24px;position:relative;
   opacity:0;transform:translateY(24px);
   transition:all 0.7s cubic-bezier(0.16,1,0.3,1);
 }
@@ -234,22 +303,29 @@ body::after{
   width:1px;background:var(--divider);
 }
 .stat-num{
-  font-family:'Montserrat',sans-serif;font-weight:900;
-  font-size:clamp(40px,5vw,64px);line-height:1;letter-spacing:-2px;
-  background:linear-gradient(135deg,var(--blue-light),var(--gold));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  background-clip:text;
+  font-family:'Playfair Display',serif;font-style:italic;font-weight:400;
+  font-size:clamp(48px,5.5vw,72px);line-height:1;letter-spacing:-1px;
+  color:var(--gold);display:inline-block;
 }
-.stat-num .suf{font-size:0.55em}
+.stat-num .suf{
+  font-size:0.45em;vertical-align:top;line-height:1;
+  font-style:italic;font-weight:400;display:inline-block;margin-left:2px;
+}
 .stat-lbl{
-  font-size:11px;letter-spacing:2.5px;text-transform:uppercase;
-  color:var(--text-dim);margin-top:10px;font-weight:500;
+  font-family:'Montserrat',sans-serif;font-weight:700;
+  font-size:12px;letter-spacing:3.5px;text-transform:uppercase;
+  color:var(--text);margin-top:18px;
+}
+.stat-sub{
+  font-family:'Playfair Display',serif;font-style:italic;font-weight:400;
+  font-size:13.5px;color:var(--text-dim);margin:10px auto 0;
+  max-width:260px;line-height:1.5;
 }
 
 /* ══════ SERVICES — slideshow ══════ */
 .services{
   position:relative;
-  height:400vh;
+  height:700vh;
 }
 .services-pin{
   position:sticky;
@@ -258,11 +334,32 @@ body::after{
   overflow:hidden;
   display:flex;
   flex-direction:column;
-  justify-content:center;
 }
+.tiny-orbs{
+  position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:0;
+}
+.tiny-orb{
+  position:absolute;border-radius:50%;
+  background:radial-gradient(circle,var(--blue-light),transparent 70%);
+  opacity:0.55;filter:blur(0.5px);
+  animation:tinyOrbDrift linear infinite;
+}
+.tiny-orb.gold{
+  background:radial-gradient(circle,var(--gold),transparent 70%);
+}
+.tiny-orb.reverse{animation-name:tinyOrbDriftReverse}
+@keyframes tinyOrbDrift{
+  0%{transform:translateX(110vw)}
+  100%{transform:translateX(-20vw)}
+}
+@keyframes tinyOrbDriftReverse{
+  0%{transform:translateX(-20vw)}
+  100%{transform:translateX(110vw)}
+}
+.svc-header,.svc-stack{position:relative;z-index:1}
 .svc-header{
-  padding:0 clamp(24px,6vw,80px);
-  margin-bottom:40px;
+  display:flex;justify-content:space-between;align-items:flex-end;gap:24px;
+  padding:80px clamp(24px,6vw,80px) 0;flex-shrink:0;
 }
 .svc-label{
   font-size:10.5px;font-weight:600;letter-spacing:4px;text-transform:uppercase;
@@ -272,68 +369,86 @@ body::after{
   font-family:'Montserrat',sans-serif;font-weight:900;
   font-size:clamp(28px,3.5vw,44px);letter-spacing:-1px;
 }
-.svc-track{
-  display:flex;
-  gap:20px;
-  padding:0 clamp(24px,6vw,80px);
-  will-change:transform;
-  align-items:center;
+.svc-progress{
+  font-family:'Montserrat',sans-serif;font-weight:700;
+  font-size:13px;letter-spacing:3px;color:var(--text-dim);
+  display:flex;align-items:baseline;gap:6px;
+}
+.svc-progress #svcCurrent{
+  color:var(--gold);font-size:28px;font-weight:900;letter-spacing:-1px;
+}
+.svc-stack{
+  position:relative;flex:1;
+  display:flex;align-items:center;justify-content:flex-start;
+  padding:40px clamp(24px,6vw,80px) 40px clamp(80px,12vw,180px);
 }
 .svc-card{
-  flex:0 0 50%;
-  min-height:360px;
-  background:var(--bg-card);border:1px solid var(--card-border);
-  border-radius:18px;padding:40px 32px;
-  display:flex;flex-direction:column;justify-content:flex-end;
-  position:relative;overflow:hidden;
-  transition:flex 0.6s cubic-bezier(0.16,1,0.3,1),
-             border-color 0.4s,background 0.4s,box-shadow 0.5s,
-             opacity 0.5s,transform 0.5s cubic-bezier(0.16,1,0.3,1);
-  cursor:default;
-  opacity:0.4;
-  transform:scale(0.95);
+  position:absolute;
+  width:min(820px,90vw);
+  height:380px;
+  border:1px solid var(--card-border);
+  border-radius:18px;padding:40px;
+  display:flex;flex-direction:column;justify-content:flex-start;
+  overflow:hidden;
+  will-change:transform,opacity;
+  transform:translateY(110%);opacity:0;
+  transition:border-color 0.4s,box-shadow 0.5s;
+  background:
+    radial-gradient(ellipse at 30% 50%,var(--glow-b),transparent 50%),
+    radial-gradient(ellipse at 70% 50%,var(--glow-g),transparent 50%),
+    url('card-bg.png') center/cover no-repeat,
+    var(--bg-alt);
 }
-.svc-card.active{
-  opacity:1;
-  transform:scale(1);
-  border-color:var(--card-border-hover);
-  background:var(--bg-card-hover);
-  box-shadow:0 20px 60px rgba(0,0,0,0.2),0 0 40px var(--glow-b);
+.svc-card::after{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--blue),var(--gold));
+  transform:scaleX(0);transform-origin:left;
+  transition:transform 0.5s cubic-bezier(0.16,1,0.3,1);
 }
-.svc-card.active::before{opacity:1}
+.svc-card.in::after{transform:scaleX(1)}
 .svc-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;bottom:0;
+  content:'';position:absolute;inset:0;
   background:radial-gradient(circle at 80% 20%,var(--glow-b),transparent 65%);
   opacity:0;transition:opacity 0.5s;pointer-events:none;
 }
+.svc-card.in::before{opacity:1}
+.svc-card.in{
+  border-color:var(--card-border-hover);
+  box-shadow:0 24px 64px rgba(0,0,0,0.18),0 0 40px var(--glow-b);
+}
 .svc-num{
-  position:absolute;top:28px;right:28px;
-  font-family:'Montserrat',sans-serif;font-weight:900;font-size:52px;
+  position:absolute;top:24px;right:28px;
+  font-family:'Montserrat',sans-serif;font-weight:900;font-size:48px;
   color:var(--text-faint);letter-spacing:-2px;line-height:1;
   transition:color 0.4s;
 }
-.svc-card.active .svc-num{
-  color:var(--card-border-hover);
-}
+.svc-card.in .svc-num{color:var(--gold)}
 .svc-ico{
   width:42px;height:42px;border-radius:12px;
   background:var(--glow-b);border:1px solid var(--card-border);
   display:flex;align-items:center;justify-content:center;
-  margin-bottom:20px;
+  margin-bottom:18px;
 }
 .svc-ico svg{width:20px;height:20px;stroke:var(--blue-light);fill:none;stroke-width:1.5}
 .svc-card h3{
-  font-family:'Montserrat',sans-serif;font-weight:700;font-size:18px;
-  margin-bottom:10px;letter-spacing:-0.3px;
+  font-family:'Montserrat',sans-serif;font-weight:700;font-size:48px;
+  margin-bottom:6px;letter-spacing:-0.3px;
 }
-.svc-card p{font-size:13.5px;line-height:1.65;color:var(--text-dim)}
+.svc-card p{font-size:20px;line-height:1.65;color:var(--text);max-width:560px;margin-top:6px}
+.svc-illus{
+  display:block;margin:12px auto 0;
+  width:50%;max-width:100%;
+  flex:1 1 0;min-height:0;
+  border-radius:10px;object-fit:contain;object-position:center;
+  opacity:0.95;
+}
 
 /* ══════ APPROACH ══════ */
 .approach{
   padding:80px clamp(24px,6vw,80px) 120px;
-  border-top:1px solid var(--divider);
+  position:relative;overflow:hidden;
 }
-.appr-inner{max-width:1000px;margin:0 auto;display:flex;gap:80px;align-items:flex-start}
+.appr-inner{max-width:1000px;margin:0 auto;display:flex;gap:80px;align-items:flex-start;position:relative;z-index:1}
 .appr-left{flex:0 0 360px;position:sticky;top:120px}
 .appr-label{
   font-size:10.5px;font-weight:600;letter-spacing:4px;text-transform:uppercase;
@@ -363,14 +478,14 @@ body::after{
   box-shadow:0 0 12px var(--glow-g);
 }
 .appr-step h4{
-  font-family:'Montserrat',sans-serif;font-weight:700;font-size:17px;
+  font-family:'Montserrat',sans-serif;font-weight:700;font-size:20px;
   margin-bottom:5px;
 }
-.appr-step p{font-size:13px;color:var(--text-dim);line-height:1.6}
+.appr-step p{font-size:15px;color:var(--text-dim);line-height:1.6}
 .appr-tag{
   display:inline-block;margin-top:10px;
   font-family:'Playfair Display',serif;font-style:italic;
-  font-size:12.5px;color:var(--gold);
+  font-size:15px;color:var(--gold);
 }
 
 /* ══════ CASE STUDIES ══════ */
@@ -396,7 +511,7 @@ body::after{
 }
 /* Card base */
 .c-card{
-  background:var(--bg-card);border:1px solid var(--card-border);
+  background:var(--bg-card-hover);border:1px solid var(--card-border-hover);
   border-radius:18px;padding:40px;position:relative;overflow:hidden;
   cursor:pointer;
   transform-style:preserve-3d;
@@ -404,6 +519,7 @@ body::after{
   transition:transform 0.4s cubic-bezier(0.16,1,0.3,1),
              border-color 0.4s,background 0.4s,box-shadow 0.5s;
   will-change:transform;
+  box-shadow:0 24px 64px rgba(0,0,0,0.18),0 0 40px var(--glow-b);
 }
 /* Scroll entrance */
 .c-card{opacity:0;transform:perspective(800px) translateY(48px)}
@@ -412,9 +528,9 @@ body::after{
 .c-card.vis{animation:cardFloat 6s ease-in-out infinite}
 .c-card.vis:nth-child(2){animation-delay:-1s}
 .c-card.vis:nth-child(3){animation-delay:-2s}
-.c-card.vis:nth-child(4){animation-delay:-3s}
-.c-card.vis:nth-child(5){animation-delay:-4s}
-.c-card.vis:nth-child(6){animation-delay:-5s}
+.c-card.vis:nth-child(4){animation-delay:3s}
+.c-card.vis:nth-child(5){animation-delay:3s}
+.c-card.vis:nth-child(6){animation-delay:3s}
 @keyframes cardFloat{
   0%,100%{transform:perspective(800px) translateY(0)}
   50%{transform:perspective(800px) translateY(-4px)}
@@ -425,57 +541,102 @@ body::after{
 .c-card::after{
   content:'';position:absolute;top:0;left:0;right:0;height:3px;
   background:linear-gradient(90deg,var(--blue),var(--gold));
-  transform:scaleX(0);transform-origin:left;
+  transform:scaleX(1);transform-origin:left;
   transition:transform 0.5s cubic-bezier(0.16,1,0.3,1);
 }
-.c-card:hover::after{transform:scaleX(1)}
 /* Glow behind card on hover */
 .c-card::before{
   content:'';position:absolute;inset:-1px;border-radius:18px;
   background:radial-gradient(circle at var(--glow-x,50%) var(--glow-y,50%),var(--glow-b),transparent 60%);
-  opacity:0;transition:opacity 0.4s;pointer-events:none;z-index:-1;
-}
-.c-card:hover::before{opacity:1}
-.c-card:hover{
-  border-color:var(--card-border-hover);
-  background:var(--bg-card-hover);
-  box-shadow:0 24px 64px rgba(0,0,0,0.18),0 0 40px var(--glow-b);
+  opacity:1;transition:opacity 0.4s;pointer-events:none;z-index:-1;
 }
 /* Card content */
 .c-emoji{font-size:28px;margin-bottom:18px;display:block}
+.c-icon-img{width:56px;height:56px;object-fit:contain;font-size:0;margin-bottom:14px}
 .c-num{
   position:absolute;top:24px;right:28px;
   font-family:'Montserrat',sans-serif;font-weight:900;font-size:48px;
-  color:var(--text-faint);letter-spacing:-2px;line-height:1;
+  color:var(--gold);letter-spacing:-2px;line-height:1;
   transition:color 0.4s;
 }
-.c-card:hover .c-num{color:var(--gold)}
 .c-card h3{
   font-family:'Montserrat',sans-serif;font-weight:700;font-size:19px;
   margin-bottom:6px;letter-spacing:-0.3px;
 }
 .c-tags{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0}
 .c-tag{
-  padding:3px 10px;border-radius:100px;font-size:10.5px;font-weight:500;
+  padding:5px 13px;border-radius:100px;font-size:12.5px;font-weight:500;
   background:var(--glow-b);color:var(--blue-light);border:1px solid var(--card-border);
 }
 /* Reveal content — overlays below tags, no layout shift */
 .c-reveal{
-  opacity:0;
-  transform:translateY(8px);
+  opacity:1;
+  transform:translateY(0);
   transition:opacity 0.35s,transform 0.4s cubic-bezier(0.16,1,0.3,1);
-  pointer-events:none;
+  pointer-events:auto;
 }
-.c-card:hover .c-reveal{
-  opacity:1;transform:translateY(0);pointer-events:auto;
-}
-.c-desc{font-size:13.5px;line-height:1.65;color:var(--text-dim);margin-bottom:18px}
+.c-desc{font-size:14px;line-height:1.65;color:var(--text-dim);margin-bottom:18px}
 .c-metrics{display:flex;flex-wrap:wrap;gap:10px}
 .c-met{
   display:flex;align-items:center;gap:5px;
-  font-size:12.5px;font-weight:600;color:var(--gold);
+  font-size:14px;font-weight:600;color:var(--gold);
 }
 .c-met::before{content:'';width:6px;height:6px;border-radius:2px;background:var(--gold);opacity:0.4}
+/* Flip card (SchoolVoices 360) */
+.c-card.c-flip{
+  background:transparent;border:none;box-shadow:none;padding:0;
+  perspective:1400px;overflow:visible;
+}
+.c-card.c-flip::before,.c-card.c-flip::after{display:none}
+.c-flip-inner{
+  position:relative;width:100%;
+  transform-style:preserve-3d;
+  transition:transform 0.75s cubic-bezier(0.16,1,0.3,1);
+}
+.c-card.c-flip:hover .c-flip-inner{transform:rotateY(180deg)}
+.c-face{
+  position:relative;
+  background:var(--bg-card-hover);
+  border:1px solid var(--card-border-hover);
+  border-radius:18px;padding:40px;
+  backface-visibility:hidden;-webkit-backface-visibility:hidden;
+  box-shadow:0 24px 64px rgba(0,0,0,0.18),0 0 40px var(--glow-b);
+}
+.c-face::after{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--blue),var(--gold));
+  border-radius:18px 18px 0 0;
+}
+.c-face::before{
+  content:'';position:absolute;inset:0;border-radius:18px;
+  background:radial-gradient(circle at var(--glow-x,50%) var(--glow-y,50%),var(--glow-b),transparent 60%);
+  pointer-events:none;
+}
+.c-face-back{
+  position:absolute;inset:0;
+  transform:rotateY(180deg);
+  padding:30px 30px;overflow-y:auto;
+  text-align:left;
+}
+.c-face-back h4{
+  font-family:'Montserrat',sans-serif;font-weight:800;font-size:14px;
+  letter-spacing:2px;text-transform:uppercase;color:var(--gold);
+  margin-top:14px;margin-bottom:10px;
+}
+.c-face-back h4:first-child{margin-top:0}
+.c-face-back p{font-size:15.5px;line-height:1.6;color:var(--text-dim);margin-bottom:10px}
+.c-face-back .b{font-weight:700;color:var(--text)}
+.c-face-back .c-bullets{list-style:none;padding:0;margin:0 0 4px}
+.c-face-back .c-bullets li{
+  position:relative;padding-left:20px;
+  font-size:13px;line-height:1.55;color:var(--text-dim);margin-bottom:7px;
+}
+.c-face-back .c-bullets li::before{
+  content:'>';position:absolute;left:0;top:0;
+  color:var(--gold);font-weight:700;
+}
+.c-face-back .c-twocol{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start;margin-top:22px}
+.c-face-back .c-twocol h4{margin-top:0}
 /* Expanded overlay */
 .case-overlay{
   position:fixed;inset:0;z-index:200;
@@ -542,7 +703,7 @@ body::after{
 
 /* ══════ INDUSTRIES — constellation ══════ */
 .industries{
-  padding:80px clamp(24px,6vw,80px) 60px;
+  padding:80px clamp(24px,6vw,80px) 0;
   text-align:center;border-top:1px solid var(--divider);
   position:relative;overflow:hidden;
 }
@@ -556,7 +717,7 @@ body::after{
   position:relative;z-index:2;
 }
 .constellation-wrap{
-  position:relative;width:100%;height:clamp(550px,58vw,720px);
+  position:relative;width:100%;height:clamp(440px,48vw,600px);
   margin:0 auto;max-width:1200px;
 }
 .const-svg{
@@ -564,45 +725,57 @@ body::after{
   pointer-events:none;
 }
 .const-svg line{
-  stroke:var(--card-border);stroke-width:1;
+  stroke:var(--card-border);stroke-width:3;
   transition:stroke 0.3s,stroke-width 0.3s,opacity 0.3s;
 }
 .const-svg circle.particle{fill:var(--blue-light);opacity:0.6}
 /* Node — HTML div, perfect flex centering */
 .const-node{
   position:absolute;
-  width:clamp(90px,10vw,130px);height:clamp(90px,10vw,130px);
-  margin-left:calc(clamp(90px,10vw,130px)/-2);
-  margin-top:calc(clamp(90px,10vw,130px)/-2);
-  display:flex;align-items:center;justify-content:center;
-  text-align:center;
+  width:clamp(90px,9.5vw,120px);height:clamp(90px,9.5vw,120px);
+  margin-left:calc(clamp(90px,9.5vw,120px)/-2);
+  margin-top:calc(clamp(90px,9.5vw,120px)/-2);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;gap:6px;padding:14px;
   border-radius:50%;
-  background:var(--bg-card);
-  border:1.5px solid var(--card-border);
-  font-family:'Montserrat',sans-serif;font-weight:700;
-  font-size:clamp(11px,1.1vw,14px);
+  background:#0c111f;
+  border:2px solid rgba(212,166,58,0.6);
+  box-shadow:
+    0 0 28px rgba(212,166,58,0.55),
+    0 0 70px rgba(232,190,90,0.3),
+    0 0 140px rgba(212,166,58,0.16),
+    inset 0 0 18px rgba(212,166,58,0.08);
+  font-family:'Montserrat',sans-serif;font-weight:600;
+  font-size:clamp(10px,1vw,12.5px);
   line-height:1.3;
   color:var(--text);
   cursor:pointer;
-  padding:12px;
   z-index:3;
   transform:scale(0);opacity:0;
   transition:transform 0.5s cubic-bezier(0.16,1,0.3,1),
              opacity 0.4s,border-color 0.3s,box-shadow 0.3s,color 0.3s;
 }
+.cn-icon{
+  width:clamp(24px,2.8vw,34px);height:clamp(24px,2.8vw,34px);
+  color:var(--gold);display:block;
+}
+.cn-icon svg{width:100%;height:100%;display:block;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 .const-node.vis{transform:scale(1);opacity:1}
 .const-node.dimmed{opacity:0.2}
 .const-node.hovered{
-  border-color:var(--gold);color:var(--gold);
-  box-shadow:0 0 24px var(--glow-b),0 0 48px rgba(79,182,233,0.08);
   transform:scale(1.1);
+  box-shadow:
+    0 0 38px rgba(212,166,58,0.8),
+    0 0 95px rgba(232,190,90,0.42),
+    0 0 180px rgba(212,166,58,0.22),
+    inset 0 0 24px rgba(212,166,58,0.14);
 }
 /* Tooltip on hover */
 .const-tooltip{
   position:absolute;pointer-events:none;z-index:10;
-  background:var(--bg-card);border:1px solid var(--card-border-hover);
+  background:rgba(12,17,31,0.66);border:1px solid rgba(212,166,58,0.4);
   border-radius:14px;padding:16px 22px;
-  box-shadow:0 12px 40px rgba(0,0,0,0.3),0 0 30px var(--glow-b);
+  box-shadow:0 12px 40px rgba(0,0,0,0.45),0 0 30px rgba(212,166,58,0.18);
   opacity:0;transform:translateY(8px) scale(0.95);
   transition:opacity 0.25s,transform 0.3s cubic-bezier(0.16,1,0.3,1);
   white-space:nowrap;
@@ -621,7 +794,11 @@ body::after{
   min-height:100vh;
   padding:0 clamp(24px,6vw,80px);
   text-align:center;position:relative;overflow:hidden;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
+}
+.cta-inner{
+  max-width:860px;width:100%;
+  position:absolute;left:50%;top:calc(50% + 95px);transform:translate(-50%,-50%);
+  padding:0 24px;z-index:1;
 }
 .cta::before{
   content:'';position:absolute;inset:0;
@@ -639,16 +816,28 @@ body::after{
   margin:100px auto;position:relative;
 }
 .cta-p{
-  font-size:16px;color:var(--text-dim);max-width:460px;margin:0 auto 36px;
+  font-size:16px;color:#d7e0f7;max-width:460px;margin:0 auto 36px;
   line-height:1.7;position:relative;
 }
 .cta-btns{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;position:relative}
+/* Hero-style entrance for CTA */
+.cta-serif{opacity:0;transform:translateY(16px)}
+.cta-h2 .ln{display:block;transform:translateY(110%);opacity:0}
+.cta-p{opacity:0;transform:translateY(16px)}
+.cta-btns{opacity:0;transform:translateY(16px)}
+.cta.in-view .cta-serif{animation:fadeUp 0.8s ease forwards 0.2s}
+.cta.in-view .cta-h2 .ln{animation:lineUp 0.9s cubic-bezier(0.16,1,0.3,1) forwards}
+.cta.in-view .cta-h2 .ln:nth-child(1){animation-delay:0.4s}
+.cta.in-view .cta-h2 .ln:nth-child(2){animation-delay:0.55s}
+.cta.in-view .cta-p{animation:fadeUp 0.8s ease forwards 0.9s}
+.cta.in-view .cta-btns{animation:fadeUp 0.8s ease forwards 1.1s}
 
 /* ══════ FOOTER ══════ */
 .footer{
   border-top:1px solid var(--divider);
   padding:40px clamp(24px,6vw,80px);
   display:flex;justify-content:space-between;align-items:center;
+  background:var(--nav-bg);
 }
 .footer-left{
   font-family:'Montserrat',sans-serif;font-weight:600;font-size:11px;
@@ -669,13 +858,14 @@ body::after{
 /* ══════ RESPONSIVE ══════ */
 @media(max-width:768px){
   .nav-links{display:none}
-  .stats-row{flex-wrap:wrap}
-  .stat-item{flex:0 0 50%}.stat-item::after{display:none}
+  .stats-row{flex-direction:column}
+  .stat-item{flex:0 0 auto;padding:28px 16px}.stat-item::after{display:none}
   .services{height:auto !important}
-  .services-pin{position:relative;height:auto;padding:100px 0;overflow:visible}
-  .svc-track{transform:none !important;overflow-x:auto;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory;padding-bottom:20px}
-  .svc-card{scroll-snap-align:center;flex:0 0 82vw;opacity:1;transform:scale(1)}
-  .svc-card.active{flex:0 0 82vw}
+  .services-pin{position:relative;height:auto;padding:80px 0;overflow:visible}
+  .svc-header{padding:0 24px}
+  .svc-stack{flex-direction:column;gap:20px;padding:32px 20px;align-items:stretch}
+  .svc-card{position:relative !important;width:auto !important;transform:none !important;opacity:1 !important;height:auto;min-height:auto}
+  .svc-card.in{box-shadow:none}
   .cases-grid{grid-template-columns:1fr}
   .appr-inner{flex-direction:column;gap:40px}
   .appr-left{position:relative;top:0;flex:none}
@@ -707,29 +897,17 @@ body::after{
 <!-- NAV -->
 <nav class="nav">
   <a href="#" class="nav-brand">
-    <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="lg" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="#4FB6E9"/><stop offset="50%" stop-color="#1E5FD6"/><stop offset="100%" stop-color="#11386B"/>
-        </linearGradient>
-        <linearGradient id="gg" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="#D4A63A"/><stop offset="100%" stop-color="#e8c36a"/>
-        </linearGradient>
-      </defs>
-      <polygon points="20,2 36,34 28,34 20,18 12,34 4,34" fill="url(#lg)"/>
-      <polygon points="10,30 18,30 14,38 6,38" fill="url(#gg)"/>
-    </svg>
-    <span class="nav-brand-name">Blue <em>Agate</em></span>
+    <img src="logo.png" alt="BlueAgate logo" class="nav-brand-logo">
+    <span class="nav-brand-name">Blue<em>Agate</em></span>
   </a>
   <ul class="nav-links">
     <li><a href="#services-s">Services</a></li>
     <li><a href="#approach-s">Approach</a></li>
     <li><a href="#cases-s">Work</a></li>
-    <li><a href="#cta-s">Contact</a></li>
+    <li><a href="#cta-s" onclick="event.preventDefault();window.scrollTo(0,document.body.scrollHeight)">Contact</a></li>
   </ul>
   <div class="nav-right">
-    <button class="theme-btn" id="themeBtn">☀️</button>
-    <a href="#cta-s" class="nav-cta">Let's Talk</a>
+    <a href="mailto:contact@blueagate.in" class="nav-cta">Let's Talk</a>
   </div>
 </nav>
 
@@ -741,11 +919,11 @@ body::after{
 <!-- HERO -->
 <section class="hero">
   <div class="hero-inner">
-    <div class="hero-over">Premium Consulting Studio</div>
+    <div class="hero-over">Boutique Product Studio</div>
     <h1 class="hero-h1">
-      <span class="ln">We architect</span>
-      <span class="ln gold">your Ideas</span>
-      <span class="ln">not features.</span>
+      <span class="ln"><span class="gold">Raw</span> Potential</span>
+      <span class="ln">To</span>
+      <span class="ln"><span class="gold">Refined</span> Product</span>
     </h1>
     <p class="hero-sub">Product innovation where design, engineering, and strategy converge to create solutions that scale.</p>
     <div class="hero-btns">
@@ -758,65 +936,184 @@ body::after{
 
 <!-- MANIFESTO -->
 <section class="manifesto" id="manifesto-s">
+  <div class="tiny-orbs" aria-hidden="true">
+    <span class="tiny-orb" style="top:6%;width:6px;height:6px;animation-duration:24s;animation-delay:-3s"></span>
+    <span class="tiny-orb gold" style="top:14%;width:9px;height:9px;animation-duration:32s;animation-delay:-10s"></span>
+    <span class="tiny-orb" style="top:22%;width:5px;height:5px;animation-duration:20s;animation-delay:-1s"></span>
+    <span class="tiny-orb" style="top:32%;width:8px;height:8px;animation-duration:28s;animation-delay:-7s"></span>
+    <span class="tiny-orb gold" style="top:42%;width:5px;height:5px;animation-duration:22s;animation-delay:-12s"></span>
+    <span class="tiny-orb" style="top:50%;width:11px;height:11px;animation-duration:34s;animation-delay:-4s"></span>
+    <span class="tiny-orb" style="top:60%;width:6px;height:6px;animation-duration:26s;animation-delay:-15s"></span>
+    <span class="tiny-orb gold" style="top:70%;width:7px;height:7px;animation-duration:30s;animation-delay:-2s"></span>
+    <span class="tiny-orb" style="top:78%;width:4px;height:4px;animation-duration:18s;animation-delay:-9s"></span>
+    <span class="tiny-orb" style="top:88%;width:9px;height:9px;animation-duration:32s;animation-delay:-6s"></span>
+    <span class="tiny-orb gold" style="top:96%;width:6px;height:6px;animation-duration:25s;animation-delay:-13s"></span>
+  </div>
   <div class="manifesto-pin">
-    <p class="manifesto-p" id="mText">
-      <span class="mw">We</span>
-      <span class="mw">don't</span>
-      <span class="mw">just</span>
-      <span class="mw">write</span>
-      <span class="mw acc">code.</span>
-      <span class="mw">We</span>
-      <span class="mw">build</span>
-      <span class="mw blu">modern,</span>
-      <span class="mw blu">resilient,</span>
-      <span class="mw">and</span>
-      <span class="mw">user-centric</span>
-      <span class="mw acc">products</span>
-      <span class="mw">—</span>
-      <span class="mw">combining</span>
-      <span class="mw">product</span>
-      <span class="mw">thinking</span>
-      <span class="mw">with</span>
-      <span class="mw">deep</span>
-      <span class="mw blu">engineering</span>
-      <span class="mw">to</span>
-      <span class="mw">move</span>
-      <span class="mw">businesses</span>
-      <span class="mw acc">forward.</span>
-    </p>
+    <div class="manifesto-block" id="mText">
+
+      <div class="m-row">
+        <div class="m-col-left">
+          <div class="m-roman">I.</div>
+          <div class="m-label">Mission</div>
+          <div class="m-sub">What we do, every day, for every client.</div>
+        </div>
+        <div class="m-col-right">
+          <p class="m-body">
+            <span class="mw">&ldquo;We</span>
+            <span class="mw">are</span>
+            <span class="mw">on</span>
+            <span class="mw">a</span>
+            <span class="mw acc">mission</span>
+            <span class="mw">to</span>
+            <span class="mw">build</span>
+            <span class="mw hl">modern,</span>
+            <span class="mw hl">resilient,</span>
+            <span class="mw hl">and</span>
+            <span class="mw hl">user-centric</span>
+            <span class="mw">products</span>
+            <span class="mw">&mdash;</span>
+            <span class="mw">combining</span>
+            <span class="mw">product</span>
+            <span class="mw">thinking</span>
+            <span class="mw">with</span>
+            <span class="mw acc">deep</span>
+            <span class="mw acc">engineering</span>
+            <span class="mw">to</span>
+            <span class="mw">move</span>
+            <span class="mw">businesses</span>
+            <span class="mw">forward.&rdquo;</span>
+          </p>
+        </div>
+      </div>
+
+      <hr class="m-divider">
+
+      <div class="m-row">
+        <div class="m-col-left">
+          <div class="m-roman">II.</div>
+          <div class="m-label">Vision</div>
+          <div class="m-sub">The future we are working toward.</div>
+        </div>
+        <div class="m-col-right">
+          <p class="m-body">
+            <span class="mw">To</span>
+            <span class="mw">create</span>
+            <span class="mw">a</span>
+            <span class="mw">world</span>
+            <span class="mw">where</span>
+            <span class="mw acc">great</span>
+            <span class="mw acc">ideas</span>
+            <span class="mw">receive</span>
+            <span class="mw">the</span>
+            <span class="mw hl">attention,</span>
+            <span class="mw hl">precision,</span>
+            <span class="mw hl">and</span>
+            <span class="mw hl">stewardship</span>
+            <span class="mw">they</span>
+            <span class="mw">deserve</span>
+            <span class="mw">&mdash;</span>
+            <span class="mw">transforming</span>
+            <span class="mw">them</span>
+            <span class="mw">into</span>
+            <span class="mw">resilient,</span>
+            <span class="mw">high-performing</span>
+            <span class="mw acc">digital</span>
+            <span class="mw acc">products.</span>
+          </p>
+        </div>
+      </div>
+
+      <p class="manifesto-tag">
+        <span class="mw acc">Innovation</span>
+        <span class="mw">.</span>
+        <span class="mw acc">Reliability</span>
+        <span class="mw">.</span>
+        <span class="mw acc">Impact</span>
+      </p>
+    </div>
   </div>
 </section>
 
 <!-- STATS -->
 <div class="stats" id="stats-s">
+  <div class="stats-over"><span>By the Numbers</span></div>
+  <div class="stats-dot"></div>
+  <div class="stats-hero">
+    <div class="stats-hero-num"><span class="ctr" data-t="100">0</span><span class="suf">%</span></div>
+    <div class="stats-hero-lbl">Client Satisfaction</div>
+    <div class="stats-hero-sub">Across every engagement, since day one.</div>
+  </div>
+  <div class="stats-dot"></div>
   <div class="stats-row">
-    <div class="stat-item" data-d="0"><div class="stat-num"><span class="ctr" data-t="100">0</span><span class="suf">%</span></div><div class="stat-lbl">Client Satisfaction</div></div>
-    <div class="stat-item" data-d="80"><div class="stat-num"><span class="ctr" data-t="15">0</span><span class="suf">+</span></div><div class="stat-lbl">Years Team Experience</div></div>
-    <div class="stat-item" data-d="160"><div class="stat-num"><span class="ctr" data-t="10">0</span><span class="suf">+</span></div><div class="stat-lbl">Global Projects</div></div>
-    <div class="stat-item" data-d="240"><div class="stat-num"><span class="ctr" data-t="8">0</span><span class="suf">+</span></div><div class="stat-lbl">Industries Served</div></div>
+    <div class="stat-item" data-d="0">
+      <div class="stat-num"><span class="ctr" data-t="15">0</span><span class="suf">+</span></div>
+      <div class="stat-lbl">Years Team Experience</div>
+      <div class="stat-sub">Senior practitioners, not juniors with a deck.</div>
+    </div>
+    <div class="stat-item" data-d="120">
+      <div class="stat-num"><span class="ctr" data-t="10">0</span><span class="suf">+</span></div>
+      <div class="stat-lbl">Global Projects</div>
+      <div class="stat-sub">Shipped from Pune to four continents.</div>
+    </div>
+    <div class="stat-item" data-d="240">
+      <div class="stat-num"><span class="ctr" data-t="8">0</span><span class="suf">+</span></div>
+      <div class="stat-lbl">Industries Served</div>
+      <div class="stat-sub">Public sector to healthcare, BFSI to retail.</div>
+    </div>
   </div>
 </div>
 
 <!-- SERVICES -->
 <section class="services" id="services-s">
   <div class="services-pin">
-    <div class="svc-header">
-      <div class="svc-label">What We Do</div>
-      <h2 class="svc-title">Our Areas of Expertise</h2>
+    <div class="tiny-orbs" aria-hidden="true">
+      <span class="tiny-orb" style="top:8%;width:6px;height:6px;animation-duration:22s;animation-delay:-3s"></span>
+      <span class="tiny-orb gold" style="top:14%;width:10px;height:10px;animation-duration:30s;animation-delay:-12s"></span>
+      <span class="tiny-orb" style="top:22%;width:4px;height:4px;animation-duration:18s;animation-delay:-1s"></span>
+      <span class="tiny-orb" style="top:30%;width:8px;height:8px;animation-duration:26s;animation-delay:-9s"></span>
+      <span class="tiny-orb gold" style="top:38%;width:5px;height:5px;animation-duration:20s;animation-delay:-5s"></span>
+      <span class="tiny-orb" style="top:46%;width:12px;height:12px;animation-duration:34s;animation-delay:-15s"></span>
+      <span class="tiny-orb" style="top:54%;width:6px;height:6px;animation-duration:24s;animation-delay:-2s"></span>
+      <span class="tiny-orb gold" style="top:62%;width:7px;height:7px;animation-duration:28s;animation-delay:-11s"></span>
+      <span class="tiny-orb" style="top:70%;width:4px;height:4px;animation-duration:19s;animation-delay:-7s"></span>
+      <span class="tiny-orb" style="top:78%;width:9px;height:9px;animation-duration:32s;animation-delay:-14s"></span>
+      <span class="tiny-orb gold" style="top:86%;width:5px;height:5px;animation-duration:21s;animation-delay:-4s"></span>
+      <span class="tiny-orb" style="top:92%;width:7px;height:7px;animation-duration:25s;animation-delay:-8s"></span>
+      <span class="tiny-orb gold" style="top:97%;width:6px;height:6px;animation-duration:27s;animation-delay:-13s"></span>
     </div>
-    <div class="svc-track" id="svcTrack">
-      <div class="svc-card"><span class="svc-num">01</span><div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><h3>Legacy Modernisation</h3><p>Rethinking foundations — from monoliths to microservices, outdated to future-ready.</p></div>
-      <div class="svc-card"><span class="svc-num">02</span><div class="svc-ico"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><h3>Custom Software</h3><p>User-centric applications built with engineering rigor, from ideation to deployment.</p></div>
-      <div class="svc-card"><span class="svc-num">03</span><div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg></div><h3>Cloud & Infrastructure</h3><p>Cloud-native, containerised, serverless — scalable and cost-efficient by design.</p></div>
-      <div class="svc-card"><span class="svc-num">04</span><div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 002 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0022 16z"/></svg></div><h3>Data Analytics</h3><p>Raw data into narratives — dashboards, predictive models, and actionable insights.</p></div>
-      <div class="svc-card"><span class="svc-num">05</span><div class="svc-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></div><h3>Leveraging AI</h3><p>NL2SQL, conversation analysis, multi-agent orchestration — intelligence where it matters.</p></div>
-      <div class="svc-card"><span class="svc-num">06</span><div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3>Data Integrity</h3><p>HIPAA, GDPR, RBAC — accurate, reliable, and protected at every layer.</p></div>
+    <div class="svc-header">
+      <div>
+        <div class="svc-label">What We Do</div>
+        <h2 class="svc-title">Our Areas of Expertise</h2>
+      </div>
+      <div class="svc-progress"><span id="svcCurrent">01</span><span>/ 06</span></div>
+    </div>
+    <div class="svc-stack" id="svcStack">
+      <div class="svc-card svc-custom"><span class="svc-num">01</span><div class="svc-ico"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><h3>Purpose-Built Platforms</h3><p>User-centric applications built with engineering rigor, from ideation to deployment.</p></div>
+      <div class="svc-card svc-legacy"><span class="svc-num">02</span><div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><h3>System Renewal</h3><p>Rethinking foundations — from monoliths to microservices, outdated to future-ready.</p></div>
+      <div class="svc-card"><span class="svc-num">03</span><div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg></div><h3>Scalable Infrastructure</h3><p>Cloud-native, containerised, serverless — scalable and cost-efficient by design.</p></div>
+      <div class="svc-card"><span class="svc-num">04</span><div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 002 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0022 16z"/></svg></div><h3>Decision Intelligence</h3><p>Raw data into narratives — dashboards, predictive models, and actionable insights.</p></div>
+      <div class="svc-card"><span class="svc-num">05</span><div class="svc-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></div><h3>Applied Intelligence</h3><p>NL2SQL, conversation analysis, multi-agent orchestration — intelligence where it matters.</p></div>
+      <div class="svc-card svc-data"><span class="svc-num">06</span><div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3>Trust Architecture</h3><p>HIPAA, GDPR, RBAC — accurate, reliable, and protected at every layer.</p></div>
     </div>
   </div>
 </section>
 
 <!-- APPROACH -->
 <section class="approach" id="approach-s">
+  <div class="tiny-orbs" aria-hidden="true">
+    <span class="tiny-orb reverse" style="top:8%;width:6px;height:6px;animation-duration:24s;animation-delay:-3s"></span>
+    <span class="tiny-orb reverse gold" style="top:18%;width:9px;height:9px;animation-duration:32s;animation-delay:-10s"></span>
+    <span class="tiny-orb reverse" style="top:28%;width:5px;height:5px;animation-duration:20s;animation-delay:-1s"></span>
+    <span class="tiny-orb reverse" style="top:38%;width:8px;height:8px;animation-duration:28s;animation-delay:-7s"></span>
+    <span class="tiny-orb reverse gold" style="top:48%;width:5px;height:5px;animation-duration:22s;animation-delay:-12s"></span>
+    <span class="tiny-orb reverse" style="top:58%;width:11px;height:11px;animation-duration:34s;animation-delay:-4s"></span>
+    <span class="tiny-orb reverse" style="top:68%;width:6px;height:6px;animation-duration:26s;animation-delay:-15s"></span>
+    <span class="tiny-orb reverse gold" style="top:78%;width:7px;height:7px;animation-duration:30s;animation-delay:-2s"></span>
+    <span class="tiny-orb reverse" style="top:88%;width:4px;height:4px;animation-duration:18s;animation-delay:-9s"></span>
+    <span class="tiny-orb reverse gold" style="top:95%;width:6px;height:6px;animation-duration:26s;animation-delay:-13s"></span>
+  </div>
   <div class="appr-inner">
     <div class="appr-left sr">
       <div class="appr-label">How We Work</div>
@@ -845,12 +1142,12 @@ body::after{
     <p class="cases-sub sr sr-d2">Real problems, real engineering, real impact.</p>
   </div>
   <div class="cases-grid" id="casesGrid">
-    <div class="c-card" data-case="0"><span class="c-num">01</span><span class="c-emoji">🎓</span><h3>School Voices 360</h3><div class="c-tags"><span class="c-tag">AWS</span><span class="c-tag">Angular</span><span class="c-tag">RDS-Postgres</span></div><div class="c-reveal"><p class="c-desc">Redeveloped a survey platform for education stakeholder feedback collection.</p><div class="c-metrics"><span class="c-met">60% performance boost</span><span class="c-met">Enhanced engagement</span></div></div></div>
-    <div class="c-card" data-case="1"><span class="c-num">02</span><span class="c-emoji">🎙</span><h3>AI Conversation Training</h3><div class="c-tags"><span class="c-tag">OpenAI</span><span class="c-tag">Eleven Labs</span><span class="c-tag">Azure</span><span class="c-tag">React</span></div><div class="c-reveal"><p class="c-desc">AI coaching with synthetic voice agents for negotiations and conflict resolution.</p><div class="c-metrics"><span class="c-met">40% confidence lift</span><span class="c-met">30% cost reduction</span></div></div></div>
-    <div class="c-card" data-case="2"><span class="c-num">03</span><span class="c-emoji">📈</span><h3>NL2SQL Analytics</h3><div class="c-tags"><span class="c-tag">OpenAI</span><span class="c-tag">SQL Validator</span></div><div class="c-reveal"><p class="c-desc">Plain English data warehouse queries with governed self-service analytics for 100+ users.</p><div class="c-metrics"><span class="c-met">45% analyst workload cut</span><span class="c-met">Days to minutes</span></div></div></div>
-    <div class="c-card" data-case="3"><span class="c-num">04</span><span class="c-emoji">🏗</span><h3>SiteNotes App</h3><div class="c-tags"><span class="c-tag">Angular</span><span class="c-tag">Node</span><span class="c-tag">Esri</span><span class="c-tag">Google Maps</span></div><div class="c-reveal"><p class="c-desc">GIS-enabled offline construction reporting with geo-tagged digital forms.</p><div class="c-metrics"><span class="c-met">100% digital lifecycle</span><span class="c-met">Reduced rework</span></div></div></div>
-    <div class="c-card" data-case="4"><span class="c-num">05</span><span class="c-emoji">🏥</span><h3>Pediatric Health Tracker</h3><div class="c-tags"><span class="c-tag">Angular.js</span><span class="c-tag">Node.js</span><span class="c-tag">AWS</span><span class="c-tag">HIPAA</span></div><div class="c-reveal"><p class="c-desc">HIPAA-compliant health tracker integrating CDC growth charts for children.</p><div class="c-metrics"><span class="c-met">HIPAA compliant</span><span class="c-met">Scalable platform</span></div></div></div>
-    <div class="c-card" data-case="5"><span class="c-num">06</span><span class="c-emoji">⏱</span><h3>Time Management App</h3><div class="c-tags"><span class="c-tag">Rust</span><span class="c-tag">Tauri</span><span class="c-tag">Angular</span></div><div class="c-reveal"><p class="c-desc">Internal productivity tracker with dashboards and Slack/Teams integration.</p><div class="c-metrics"><span class="c-met">$10K annual savings</span><span class="c-met">25% visibility increase</span></div></div></div>
+    <div class="c-card c-flip" data-case="0"><div class="c-flip-inner"><div class="c-face c-face-front"><span class="c-num">01</span><img class="c-emoji c-icon-img" src="case-school.png" alt="School Voices 360"><h3>School Voices 360</h3><div class="c-tags"><span class="c-tag">AWS</span><span class="c-tag">Angular</span><span class="c-tag">RDS-Postgres</span></div><div class="c-reveal"><p class="c-desc">Redeveloped a survey platform for education stakeholder feedback collection.</p><div class="c-metrics"><span class="c-met">60% performance boost</span><span class="c-met">Enhanced engagement</span></div></div></div><div class="c-face c-face-back"><h4>The Requirement</h4><p>The client required a web application to streamline feedback collection and survey management across the education sector. They also needed a centralized system for generating reports and insights.</p><div class="c-twocol"><div><h4>Solution</h4><ul class="c-bullets"><li>Customized Survey Creation</li><li>Multi-channel Data Collection</li><li>Actionable Insights</li></ul></div><div><h4>Challenges</h4><ul class="c-bullets"><li>Diverse Stakeholders</li><li>Data Collection &amp; Analysis</li></ul></div></div></div></div></div>
+    <div class="c-card" data-case="1"><span class="c-num">02</span><img class="c-emoji c-icon-img" src="case-ai.png" alt="AI Conversation Training"><h3>AI Conversation Training</h3><div class="c-tags"><span class="c-tag">OpenAI</span><span class="c-tag">Eleven Labs</span><span class="c-tag">Azure</span><span class="c-tag">React</span></div><div class="c-reveal"><p class="c-desc">AI coaching with synthetic voice agents for negotiations and conflict resolution.</p><div class="c-metrics"><span class="c-met">40% confidence lift</span><span class="c-met">30% cost reduction</span></div></div></div>
+    <div class="c-card" data-case="2"><span class="c-num">03</span><img class="c-emoji c-icon-img" src="case-analytics.png" alt="NL2SQL Analytics"><h3>NL2SQL Analytics</h3><div class="c-tags"><span class="c-tag">OpenAI</span><span class="c-tag">SQL Validator</span></div><div class="c-reveal"><p class="c-desc">Plain English data warehouse queries with governed self-service analytics for 100+ users.</p><div class="c-metrics"><span class="c-met">45% analyst workload cut</span><span class="c-met">Days to minutes</span></div></div></div>
+    <div class="c-card" data-case="3"><span class="c-num">04</span><img class="c-emoji c-icon-img" src="case-site.png" alt="SiteNotes"><h3>SiteNotes App</h3><div class="c-tags"><span class="c-tag">Angular</span><span class="c-tag">Node</span><span class="c-tag">Esri</span><span class="c-tag">Google Maps</span></div><div class="c-reveal"><p class="c-desc">GIS-enabled offline construction reporting with geo-tagged digital forms.</p><div class="c-metrics"><span class="c-met">100% digital lifecycle</span><span class="c-met">Reduced rework</span></div></div></div>
+    <div class="c-card c-flip" data-case="4"><div class="c-flip-inner"><div class="c-face c-face-front"><span class="c-num">05</span><img class="c-emoji c-icon-img" src="case-health.png" alt="Pediatric Health"><h3>Pediatric Health Tracker</h3><div class="c-tags"><span class="c-tag">Angular.js</span><span class="c-tag">Node.js</span><span class="c-tag">AWS</span><span class="c-tag">HIPAA</span></div><div class="c-reveal"><p class="c-desc">HIPAA-compliant health tracker integrating CDC growth charts for children.</p><div class="c-metrics"><span class="c-met">HIPAA compliant</span><span class="c-met">Scalable platform</span></div></div></div><div class="c-face c-face-back"><h4>The Requirement</h4><p>The client required a scalable health tracking platform with integrated CDC growth charts for children. The system enables accurate growth monitoring and healthier lifestyle tracking.</p><div class="c-twocol"><div><h4>Solution</h4><ul class="c-bullets"><li>Custom Development</li><li>Scalable Architecture Design</li><li>User-Centric Design</li><li>Data Security and Privacy &mdash; Healthcare Compliance</li></ul></div><div><h4>Challenges</h4><ul class="c-bullets"><li>Integrating Growth Charts</li><li>Scalability</li><li>User Engagement and Adoption</li></ul></div></div></div></div></div>
+    <div class="c-card c-flip" data-case="5"><div class="c-flip-inner"><div class="c-face c-face-front"><span class="c-num">06</span><img class="c-emoji c-icon-img" src="case-time.png" alt="Time Management"><h3>Time Management App</h3><div class="c-tags"><span class="c-tag">Rust</span><span class="c-tag">Tauri</span><span class="c-tag">Angular</span></div><div class="c-reveal"><p class="c-desc">Internal productivity tracker with dashboards and Slack/Teams integration.</p><div class="c-metrics"><span class="c-met">$10K annual savings</span><span class="c-met">25% visibility increase</span></div></div></div><div class="c-face c-face-back"><h4>The Requirement</h4><p>The client required an automated platform to streamline customer support and ticket management through BugHerd integration. The system tracks unanswered tickets and alerts teams if no response is provided within 24 hours.</p><div class="c-twocol"><div><h4>Solution</h4><ul class="c-bullets"><li>Custom Automation Platform</li><li>Automated Notification System</li><li>Scalable Architecture Design</li></ul></div><div><h4>Challenges</h4><ul class="c-bullets"><li>Automated Notification Logic</li><li>Scalability and Performance</li><li>AWS Services Integration</li></ul></div></div></div></div></div>
   </div>
 </section>
 
@@ -868,18 +1165,54 @@ body::after{
 
 <!-- INDUSTRIES -->
 <section class="industries" id="industries-s">
+  <div class="tiny-orbs" aria-hidden="true">
+    <span class="tiny-orb reverse" style="top:8%;width:6px;height:6px;animation-duration:22s;animation-delay:-3s"></span>
+    <span class="tiny-orb reverse gold" style="top:18%;width:9px;height:9px;animation-duration:30s;animation-delay:-10s"></span>
+    <span class="tiny-orb reverse" style="top:28%;width:5px;height:5px;animation-duration:20s;animation-delay:-1s"></span>
+    <span class="tiny-orb reverse" style="top:40%;width:8px;height:8px;animation-duration:28s;animation-delay:-7s"></span>
+    <span class="tiny-orb reverse gold" style="top:52%;width:6px;height:6px;animation-duration:24s;animation-delay:-12s"></span>
+    <span class="tiny-orb reverse" style="top:62%;width:11px;height:11px;animation-duration:34s;animation-delay:-4s"></span>
+    <span class="tiny-orb reverse" style="top:72%;width:5px;height:5px;animation-duration:18s;animation-delay:-15s"></span>
+    <span class="tiny-orb reverse gold" style="top:84%;width:7px;height:7px;animation-duration:32s;animation-delay:-2s"></span>
+    <span class="tiny-orb reverse" style="top:92%;width:4px;height:4px;animation-duration:19s;animation-delay:-9s"></span>
+    <span class="tiny-orb reverse gold" style="top:97%;width:6px;height:6px;animation-duration:26s;animation-delay:-13s"></span>
+  </div>
   <div class="ind-lbl sr">Industries We Serve</div>
   <h2 class="ind-title sr sr-d1">Domain Expertise</h2>
   <div class="constellation-wrap" id="constWrap">
     <svg class="const-svg" id="constSvg"></svg>
-    <div class="const-node" data-i="0" style="left:15%;top:35%">Government</div>
-    <div class="const-node" data-i="1" style="left:38%;top:18%">BFSI</div>
-    <div class="const-node" data-i="2" style="left:62%;top:15%">Healthcare</div>
-    <div class="const-node" data-i="3" style="left:85%;top:32%">Manufacturing</div>
-    <div class="const-node" data-i="4" style="left:78%;top:62%">Retail &amp;<br>E-commerce</div>
-    <div class="const-node" data-i="5" style="left:52%;top:50%">Education</div>
-    <div class="const-node" data-i="6" style="left:22%;top:68%">Logistics</div>
-    <div class="const-node" data-i="7" style="left:48%;top:82%">IT &amp;<br>ITeS</div>
+    <div class="const-node" data-i="0" style="left:15%;top:35%">
+      <span class="cn-icon"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V11M9 21V11M15 21V11M19 21V11M2 11h20l-10-7z"/></svg></span>
+      <span class="cn-label">Government</span>
+    </div>
+    <div class="const-node" data-i="1" style="left:38%;top:18%">
+      <span class="cn-icon"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 9-8 10-4.5-1-8-5-8-10V7l8-4z"/><path d="M9 12l2 2 4-4"/></svg></span>
+      <span class="cn-label">BFSI</span>
+    </div>
+    <div class="const-node" data-i="2" style="left:62%;top:15%">
+      <span class="cn-icon"><svg viewBox="0 0 24 24"><path d="M20.84 6.61a5.5 5.5 0 00-7.78 0L12 7.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 22.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/><path d="M3 13h3l1.5-2 2 4 1.5-3 1 2H15"/></svg></span>
+      <span class="cn-label">Healthcare</span>
+    </div>
+    <div class="const-node" data-i="3" style="left:85%;top:32%">
+      <span class="cn-icon"><svg viewBox="0 0 24 24"><path d="M3 21V11l5 4V11l5 4V5l8 6v10z"/><path d="M9 21v-4M14 21v-4M18 21v-4"/></svg></span>
+      <span class="cn-label">Manufacturing</span>
+    </div>
+    <div class="const-node" data-i="4" style="left:78%;top:62%">
+      <span class="cn-icon"><svg viewBox="0 0 24 24"><circle cx="9" cy="20" r="1.4"/><circle cx="19" cy="20" r="1.4"/><path d="M2 3h3l2.7 12.4a2 2 0 002 1.6h9a2 2 0 002-1.6L22 7H6"/></svg></span>
+      <span class="cn-label">Retail &amp;<br>E-commerce</span>
+    </div>
+    <div class="const-node" data-i="5" style="left:52%;top:50%">
+      <span class="cn-icon"><svg viewBox="0 0 24 24"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/><path d="M22 9v5"/></svg></span>
+      <span class="cn-label">Education</span>
+    </div>
+    <div class="const-node" data-i="6" style="left:22%;top:68%">
+      <span class="cn-icon"><svg viewBox="0 0 24 24"><path d="M21 8L12 3 3 8v8l9 5 9-5V8z"/><path d="M3 8l9 5 9-5"/><path d="M12 13v8"/><path d="M7.5 5.5l9 5"/></svg></span>
+      <span class="cn-label">Logistics</span>
+    </div>
+    <div class="const-node" data-i="7" style="left:48%;top:82%">
+      <span class="cn-icon"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="14" rx="1.5"/><path d="M8 22h8M12 18v4"/></svg></span>
+      <span class="cn-label">IT &amp;<br>ITeS</span>
+    </div>
     <div class="const-tooltip" id="constTooltip">
       <span class="ct-name"></span>
       <span class="ct-sub"></span>
@@ -889,12 +1222,26 @@ body::after{
 
 <!-- CTA -->
 <section class="cta" id="cta-s">
-  <div class="cta-serif sr">Not a vendor — a product studio</div>
-  <h2 class="cta-h2 sr sr-d1">Let's build the<br>future together.</h2>
-  <p class="cta-p sr sr-d2">Great ideas deserve precision and stewardship. Let's transform yours into a resilient, high-performing product.</p>
-  <div class="cta-btns sr sr-d3">
-    <a href="mailto:contact@blueagate.in" class="btn fill">Get in Touch</a>
-    <a href="https://www.blueagate.in" target="_blank" class="btn outline">Visit blueagate.in</a>
+  <div class="tiny-orbs" aria-hidden="true">
+    <span class="tiny-orb" style="top:8%;width:6px;height:6px;animation-duration:24s;animation-delay:-3s"></span>
+    <span class="tiny-orb gold" style="top:18%;width:9px;height:9px;animation-duration:32s;animation-delay:-10s"></span>
+    <span class="tiny-orb reverse" style="top:28%;width:5px;height:5px;animation-duration:20s;animation-delay:-1s"></span>
+    <span class="tiny-orb" style="top:38%;width:8px;height:8px;animation-duration:28s;animation-delay:-7s"></span>
+    <span class="tiny-orb reverse gold" style="top:48%;width:5px;height:5px;animation-duration:22s;animation-delay:-12s"></span>
+    <span class="tiny-orb" style="top:58%;width:11px;height:11px;animation-duration:34s;animation-delay:-4s"></span>
+    <span class="tiny-orb reverse" style="top:68%;width:6px;height:6px;animation-duration:26s;animation-delay:-15s"></span>
+    <span class="tiny-orb gold" style="top:78%;width:7px;height:7px;animation-duration:30s;animation-delay:-2s"></span>
+    <span class="tiny-orb reverse" style="top:88%;width:4px;height:4px;animation-duration:18s;animation-delay:-9s"></span>
+    <span class="tiny-orb gold" style="top:95%;width:6px;height:6px;animation-duration:26s;animation-delay:-13s"></span>
+  </div>
+  <div class="cta-inner">
+    <div class="cta-serif">Not a vendor. We are a Product Studio!</div>
+    <h2 class="cta-h2"><span class="ln">Let's build the</span><span class="ln">future together.</span></h2>
+    <p class="cta-p">Great ideas deserve precision and stewardship. Let's transform yours into a resilient, high-performing product.</p>
+    <div class="cta-btns">
+      <a href="mailto:contact@blueagate.in" class="btn fill">Get in Touch</a>
+      <a href="https://www.blueagate.in" target="_blank" class="btn outline">Visit blueagate.in</a>
+    </div>
   </div>
 </section>
 
@@ -912,21 +1259,17 @@ body::after{
 
 <script>
 // ═══ THEME ═══
-const themeBtn=document.getElementById('themeBtn');
-function setTheme(t){
-  document.documentElement.setAttribute('data-theme',t);
-  themeBtn.textContent=t==='dark'?'☀️':'🌙';
-  if(window.updateScene) window.updateScene(t);
-}
-themeBtn.addEventListener('click',()=>{
-  setTheme(document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark');
-});
 
 // ═══ SCROLL REVEAL (IntersectionObserver) ═══
 const srObs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');srObs.unobserve(e.target)}});
 },{threshold:0.15,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.sr').forEach(el=>srObs.observe(el));
+const ctaObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in-view');ctaObs.unobserve(e.target)}});
+},{threshold:0.25});
+const ctaSection=document.querySelector('.cta');
+if(ctaSection)ctaObs.observe(ctaSection);
 
 // ═══ MANIFESTO WORD REVEAL ═══
 const mSection=document.getElementById('manifesto-s');
@@ -967,47 +1310,67 @@ function checkStats(){
   }
 }
 
-// ═══ SERVICES SLIDESHOW ═══
+// ═══ SERVICES STACK ═══
 const svcSection=document.getElementById('services-s');
-const svcTrack=document.getElementById('svcTrack');
 const svcCards=document.querySelectorAll('.svc-card');
+const svcCurrent=document.getElementById('svcCurrent');
 const numCards=svcCards.length;
-let currentActive=-1;
+let svcLastActive=-1;
 
-function updateSlideshow(){
-  if(window.innerWidth<=768)return;
+function updateSvcStack(){
+  if(window.innerWidth<=768){
+    svcCards.forEach(c=>{
+      c.style.transform='';c.style.opacity='';c.style.zIndex='';
+      c.classList.remove('in');
+    });
+    return;
+  }
   const rect=svcSection.getBoundingClientRect();
   const scrollRange=svcSection.offsetHeight-window.innerHeight;
   if(scrollRange<=0)return;
   const progress=Math.min(Math.max(-rect.top/scrollRange,0),1);
 
-  const activeIndex=Math.min(Math.floor(progress*numCards),numCards-1);
+  // Card 0 is already "in" at progress=0; subsequent cards slide in across the remaining scroll.
+  const segs=numCards-1;
+  const scaled=1+progress*segs;
 
-  if(activeIndex!==currentActive){
-    currentActive=activeIndex;
-    svcCards.forEach((c,i)=>c.classList.toggle('active',i===activeIndex));
+  svcCards.forEach((card,i)=>{
+    // cp: <=0 = below screen; 0..1 = sliding in; >1 = stacked behind (depth = cp-1)
+    const cp=scaled-i;
+    if(cp<=0){
+      card.style.transform='translateY(110%) scale(1)';
+      card.style.opacity='0';
+    } else if(cp<=1){
+      const ease=1-Math.pow(1-cp,3);
+      const ty=110*(1-ease);
+      card.style.transform='translateY('+ty+'%) scale(1)';
+      card.style.opacity=String(ease);
+    } else {
+      const depth=Math.min(cp-1,5);
+      const ty=-Math.min(depth*22,90);
+      const sc=Math.max(1-depth*0.04,0.80);
+      card.style.transform='translateY('+ty+'px) scale('+sc+')';
+      card.style.opacity='1';
+    }
+    card.style.zIndex=String(i+1);
+  });
+
+  // Active = the card most recently arrived (mid-transition switches at 50%)
+  let activeIndex=Math.floor(scaled-0.5);
+  if(activeIndex>=numCards)activeIndex=numCards-1;
+  if(activeIndex<0)activeIndex=0;
+  if(activeIndex!==svcLastActive){
+    svcLastActive=activeIndex;
+    svcCards.forEach((c,i)=>c.classList.toggle('in',i===activeIndex));
+    if(svcCurrent)svcCurrent.textContent=String(activeIndex+1).padStart(2,'0');
   }
-
-  // Center the active card horizontally on screen
-  const trackPadding=parseFloat(getComputedStyle(svcTrack).paddingLeft)||0;
-  const gap=20;
-  const cardWidth=svcCards[0].offsetWidth;
-  const step=cardWidth+gap;
-  const centerBase=cardWidth/2-(window.innerWidth/2-trackPadding);
-
-  const fractional=(progress*numCards)-activeIndex;
-  // Smoothly interpolate, but lock on last card — no further movement
-  const interp=(activeIndex<numCards-1)?Math.pow(Math.min(fractional*1.3,1),2):0;
-  const rawOffset=centerBase+step*(activeIndex+interp);
-  const targetX=Math.max(0,rawOffset);
-  svcTrack.style.transform='translateX(-'+targetX+'px)';
 }
 
-svcCards[0]&&svcCards[0].classList.add('active');
+svcCards[0]&&svcCards[0].classList.add('in');
 
-window.addEventListener('load',updateSlideshow);
-window.addEventListener('resize',function(){currentActive=-1;updateSlideshow()});
-window.addEventListener('scroll',updateSlideshow,{passive:true});
+window.addEventListener('load',updateSvcStack);
+window.addEventListener('resize',function(){svcLastActive=-1;updateSvcStack()});
+window.addEventListener('scroll',updateSvcStack,{passive:true});
 
 // ═══ APPROACH TIMELINE ═══
 const apprSection=document.getElementById('approach-s');
@@ -1050,26 +1413,22 @@ const caseExpandData=[
 
   // 3D tilt on mousemove
   cCards.forEach(function(card){
+    var isFlip=card.classList.contains('c-flip');
     card.addEventListener('mousemove',function(e){
       var rect=card.getBoundingClientRect();
       var x=(e.clientX-rect.left)/rect.width;
       var y=(e.clientY-rect.top)/rect.height;
-      var tiltX=(0.5-y)*10; // max 5deg
+      var tiltX=(0.5-y)*10;
       var tiltY=(x-0.5)*10;
       card.classList.add('tilting');
-      card.style.transform='perspective(800px) rotateX('+tiltX+'deg) rotateY('+tiltY+'deg) translateY(-8px) scale(1.02)';
+      var persp=isFlip?'1400px':'800px';
+      card.style.transform='perspective('+persp+') rotateX('+tiltX+'deg) rotateY('+tiltY+'deg) translateY(-8px) scale(1.02)';
       card.style.setProperty('--glow-x',(x*100)+'%');
       card.style.setProperty('--glow-y',(y*100)+'%');
     });
     card.addEventListener('mouseleave',function(){
       card.classList.remove('tilting');
       card.style.transform='';
-    });
-
-    // Click to expand
-    card.addEventListener('click',function(){
-      var idx=parseInt(card.getAttribute('data-case'));
-      openCaseCard(idx);
     });
   });
 
@@ -1199,10 +1558,16 @@ function revealCards(){}
     });
     node.addEventListener('mousemove',function(e){
       var wr=wrap.getBoundingClientRect();
-      var mx=e.clientX-wr.left;
-      var my=e.clientY-wr.top;
-      tooltip.style.left=Math.min(mx+18,wrap.clientWidth-250)+'px';
-      tooltip.style.top=(my-70)+'px';
+      var nr=node.getBoundingClientRect();
+      var cx=nr.left-wr.left+nr.width/2;
+      var cy=nr.top-wr.top+nr.height/2;
+      var r=nr.width/2;
+      var tw=tooltip.offsetWidth||260;
+      var th=tooltip.offsetHeight||72;
+      var left=cx+r+14;
+      if(left+tw>wrap.clientWidth)left=cx-r-tw-14;
+      tooltip.style.left=Math.max(8,left)+'px';
+      tooltip.style.top=(cy-th/2)+'px';
     });
     node.addEventListener('mouseleave',function(){
       nodeDivs.forEach(function(n){n.classList.remove('hovered','dimmed')});
@@ -1237,8 +1602,19 @@ function revealCards(){}
 const crystalCanvas=document.getElementById('crystal-canvas');
 function updateCrystalOpacity(){
   const scrollY=window.scrollY||window.pageYOffset;
-  const fade=Math.max(0,1-scrollY/(window.innerHeight*2.5));
-  crystalCanvas.style.opacity=0.6+fade*0.4;
+  const vh=window.innerHeight;
+  const fade=Math.max(0,1-scrollY/(vh*2.5));
+  let op=0.6+fade*0.4;
+  const ctaEl=document.getElementById('cta-s');
+  if(ctaEl){
+    const ctaTop=ctaEl.offsetTop;
+    const rampStart=ctaTop-vh*0.6;
+    if(scrollY>=rampStart){
+      const ctaProg=Math.min(1,(scrollY-rampStart)/Math.max(1,(ctaTop-rampStart)));
+      op=Math.max(op,0.6+ctaProg*0.4);
+    }
+  }
+  crystalCanvas.style.opacity=op;
 }
 
 // ═══ ORB SHARED ═══
@@ -1359,6 +1735,7 @@ requestAnimationFrame(onScroll);
     emissive:0x1E5FD6,emissiveIntensity:0.2
   });
   const crystal=new THREE.Mesh(cGeo,cMat);
+  crystal.scale.set(2,2,2);
   scene.add(crystal);
 
   // Core
@@ -1376,12 +1753,13 @@ requestAnimationFrame(onScroll);
     emissive:0xD4A63A,emissiveIntensity:0.3
   });
   const core=new THREE.Mesh(coGeo,coMat);
+  core.scale.set(2,2,2);
   scene.add(core);
 
   // Wireframe
   const wMat=new THREE.MeshBasicMaterial({color:0x4FB6E9,wireframe:true,transparent:true,opacity:0.12});
   const wire=new THREE.Mesh(cGeo.clone(),wMat);
-  wire.scale.set(1.06,1.06,1.06);
+  wire.scale.set(2.12,2.12,2.12);
   scene.add(wire);
 
   // Particles
@@ -1399,6 +1777,31 @@ requestAnimationFrame(onScroll);
   const pMat=new THREE.PointsMaterial({color:0x4FB6E9,size:0.03,transparent:true,opacity:0.5,sizeAttenuation:true});
   const pts=new THREE.Points(pGeo,pMat);
   scene.add(pts);
+
+  // Tiny orbs — traverse in and out of the big orb, merge into it on scroll
+  const TINY_COUNT=22;
+  const tinyOrbs=[];
+  const tinyGeo=new THREE.SphereGeometry(0.07,14,14);
+  for(let i=0;i<TINY_COUNT;i++){
+    const mat=new THREE.MeshBasicMaterial({
+      color:i%4===0?0xD4A63A:0x7CC4FF,
+      transparent:true,opacity:0.9,
+      blending:THREE.AdditiveBlending,depthWrite:false
+    });
+    const m=new THREE.Mesh(tinyGeo,mat);
+    m.userData={
+      baseR:1.5+Math.random()*4.0,
+      swing:1.0+Math.random()*2.6,
+      speed:0.22+Math.random()*0.75,
+      radSpeed:0.2+Math.random()*0.55,
+      phase:Math.random()*Math.PI*2,
+      tilt:Math.random()*Math.PI,
+      axis:Math.random()*Math.PI*2,
+      ellipseY:0.6+Math.random()*1.1
+    };
+    scene.add(m);
+    tinyOrbs.push(m);
+  }
 
   // Lights
   scene.add(new THREE.AmbientLight(0x4488cc,0.5));
@@ -1447,6 +1850,37 @@ requestAnimationFrame(onScroll);
     }
     pts.geometry.attributes.position.needsUpdate=true;
     pts.rotation.y+=0.0002;
+    // Tiny orbs: orbit + merge based on hero scroll progress
+    const sY=window.scrollY||window.pageYOffset||0;
+    const vh=window.innerHeight;
+    const merge=Math.min(1,sY/(vh*0.85));
+    let show=1-merge;
+    // Re-emerge tiny orbs around the big orb in the CTA (last) section
+    const ctaEl=document.getElementById('cta-s');
+    if(ctaEl){
+      const ctaTop=ctaEl.offsetTop;
+      const rampStart=ctaTop-vh*0.6;
+      const rampEnd=ctaTop;
+      if(sY>=rampStart){
+        const ctaShow=Math.min(1,(sY-rampStart)/Math.max(1,(rampEnd-rampStart)));
+        show=Math.max(show,ctaShow);
+      }
+    }
+    for(let i=0;i<tinyOrbs.length;i++){
+      const m=tinyOrbs[i];const u=m.userData;
+      const a=t*u.speed+u.phase;
+      const r=u.baseR+Math.sin(t*u.radSpeed+u.phase)*u.swing;
+      const x=Math.cos(a)*r;
+      const y=Math.sin(a)*r*Math.cos(u.tilt)*u.ellipseY;
+      const z=Math.sin(a)*r*Math.sin(u.tilt);
+      const ca=Math.cos(u.axis),sa2=Math.sin(u.axis);
+      const xr=x*ca-y*sa2;
+      const yr=x*sa2+y*ca;
+      m.position.set(currentOrbX+xr*show,fy+yr*show,z*show);
+      m.material.opacity=0.9*show;
+      const s=Math.max(0.05,show);
+      m.scale.set(s,s,s);
+    }
     renderer.render(scene,camera);
   })();
 })();
