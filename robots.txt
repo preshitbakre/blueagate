@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.blueagate.in/sitemap.xml
+Sitemap: https://blueagate.in/sitemap.xml
